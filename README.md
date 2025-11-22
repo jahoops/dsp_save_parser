@@ -18,16 +18,15 @@ pip install -e .
 pip install flask
 ```
 
-<blockquote style="background:#fff3cd;border:1px solid #ffe69c;padding:0.75rem 1rem;border-radius:6px;">
-<strong>Don’t miss this:</strong> To edit a Dark Fog save you only need to change two paths in <code>inventory_editor.py</code>:
-
-```python
-SOURCE_SAVE = Path(r"C:\Users\J\Documents\Dyson Sphere Program\Save\save this one.dsv")
-OUTPUT_SAVE = Path(r"C:\Users\J\Documents\Dyson Sphere Program\Save\load this one.dsv")
-```
-
-Point <code>SOURCE_SAVE</code> at the save to read, <code>OUTPUT_SAVE</code> at the file you want written, then run the Flask server (see below). The inventory generator and other scripts are optional helpers, not prerequisites.
-</blockquote>
+> [!IMPORTANT]
+> **Don’t miss this:** To edit a Dark Fog save you only need to change two paths in `inventory_editor.py`:
+>
+> ```python
+> SOURCE_SAVE = Path(r"C:\Users\J\Documents\Dyson Sphere Program\Save\save this one.dsv")
+> OUTPUT_SAVE = Path(r"C:\Users\J\Documents\Dyson Sphere Program\Save\load this one.dsv")
+> ```
+>
+> Point `SOURCE_SAVE` at the save to read, `OUTPUT_SAVE` at the file you want written, then run the Flask server (see below). The inventory generator and other scripts are optional helpers, not prerequisites.
 
 ## Inventory workflow
 
