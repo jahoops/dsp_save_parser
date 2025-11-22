@@ -26,7 +26,7 @@ pip install flask
 > OUTPUT_SAVE = Path(r"C:\Users\J\Documents\Dyson Sphere Program\Save\load this one.dsv")
 > ```
 >
-> Point `SOURCE_SAVE` at the save to read, `OUTPUT_SAVE` at the file you want written, then run the Flask server (see below). The inventory generator and other scripts are optional helpers, not prerequisites.
+> Point `SOURCE_SAVE` at the save to read, `OUTPUT_SAVE` at the file you want written, then run the Flask server (see below). **The inventory generator and other scripts are optional helpers, not prerequisites.**
 
 ## Inventory workflow
 
