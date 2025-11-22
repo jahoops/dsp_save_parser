@@ -334,6 +334,11 @@ class SaveObject(ParserBase, metaclass=ABCMeta):
     location_end: int
     """The end location of the deserialized object in the file."""
 
+    @property
+    def self(self):
+        """Compatibility shim for generated code that expects .self references."""
+        return self
+
     def __repr__(self):
         if self.location_start == -1 and self.location_end == -1:
             return super().__repr__()

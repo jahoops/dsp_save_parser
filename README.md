@@ -1,8 +1,69 @@
 # DSP Save Parser
 
-A python based save data parser for Dyson Sphere Program.
+A Python-based toolkit for inspecting and editing Dyson Sphere Program (DSP) save data. In addition to the original parsing utilities, this fork adds a data-driven inventory catalog generator and a Flask-powered inventory editor for customizing every inventory slot from the browser.
 
-Current version: `0.10.33.27005` (Updated on 16 Oct, 2025)
+Current game version supported: `0.10.33.27005` (Updated on 16 Oct, 2025)
+
+![Inventory editor screenshot](dsp_edit.png)
+
+## Quick Start (Windows)
+
+```cmd
+git clone https://github.com/jahoops/dsp_save_parser.git
+cd dsp_save_parser
+python -m venv .venv
+.venv\Scripts\activate
+pip install -U pip
+pip install -e .
+pip install flask
+```
+
+Update the hard-coded `SOURCE_SAVE` and `OUTPUT_SAVE` constants near the top of `inventory_editor.py`, `run_inventory_editor.cmd`, and any helper scripts so they point to the DSP save files you want to modify.
+
+## Inventory workflow
+
+### 1. Generate the item catalog
+
+`generate_inventory_json.py` converts the curated `more_inventory_info.py` data dump into a searchable `inventory.json` containing every item’s metadata.
+
+```cmd
+python generate_inventory_json.py
+```
+
+The resulting `inventory.json` (173 entries) is consumed by both the editor and other automation scripts.
+
+### 2. Launch the inventory editor
+
+Run the Flask UI to view and edit every inventory slot in your save:
+
+```cmd
+run_inventory_editor.cmd
+```
+
+This helper script activates `.venv`, sets `FLASK_APP=inventory_editor.py`, and starts the development server. Visit the URL printed in the terminal (default `http://127.0.0.1:5000/`).
+
+Key features:
+
+- Displays all slots with the current item, stack size, and count pulled directly from the save file.
+- Searchable, tooltip-rich dropdowns populated from `inventory.json` (real-time filtering, auto-select, item descriptions).
+- Auto-adjusts counts to the selected item’s stack size; manual overrides are still allowed.
+- Full-screen “Saving…” overlay plus success banner with timestamps so you always know when the write is in progress or complete.
+
+Submitting the form writes changes into `OUTPUT_SAVE` using the same serialization logic as `test.py`, preserving other save data untouched.
+
+### 3. Script quick reference
+
+- `dump.py` – prints the current inventory contents to the console.
+- `test.py` – example script that swaps specific items inside your save; useful for automation proofing.
+- `inventory_editor.py` – Flask app described above.
+- `run_inventory_editor.cmd` – Windows launcher for the Flask app.
+
+## Traditional parser usage
+
++--------------------------------------------------------------------------------+
+| The original documentation for parsing/serializing saves and blueprints remains |
+| below for convenience. The new tooling sits on top of the same parser library.  |
++--------------------------------------------------------------------------------+
 
 ## Usage
 
