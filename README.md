@@ -28,6 +28,8 @@ pip install flask
 >
 > Point `SOURCE_SAVE` at the save to read, `OUTPUT_SAVE` at the file you want written, then run the Flask server (see below). **The inventory generator and other scripts are optional helpers, not prerequisites.**
 
+**Everything below describes optional utilities that build on top of the editor—skip ahead only if you want those extras.**
+
 ## Inventory workflow
 
 ### 1. Generate the item catalog
